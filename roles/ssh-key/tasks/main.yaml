@@ -1,0 +1,13 @@
+---
+- name: Set authorized key for user copying it from current user
+  ansible.posix.authorized_key:
+    user: "{{ ansible_user }}"
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+- name: Set home permission properly
+  become: yes
+  file:
+    path: "/var/services/homes/{{ ansible_user }}"
+    state: directory
+    mode: u=rwx,g=r-x,o=r-x

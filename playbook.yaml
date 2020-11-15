@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+
+  environment:
+    PATH: "/opt/bin:{{ ansible_env.PATH }}"
+
+  roles:
+    - transmission
+    - flexget

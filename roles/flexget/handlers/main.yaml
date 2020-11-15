@@ -1,0 +1,6 @@
+---
+- name: restart flexget
+  become: true
+  service:
+    name: flexget
+    state: restarted

@@ -1,0 +1,19 @@
+---
+- name: stop transmission
+  service:
+    name: transmission-daemon
+    state: stopped
+
+- name: upgrade flexget & plugins
+  community.general.opkg:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - transmission-cfp-daemon
+    - transmission-web
+
+- name: start transmission
+  service:
+    name: transmission-daemon
+    state: started

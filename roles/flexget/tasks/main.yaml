@@ -1,0 +1,26 @@
+---
+- name: pip self-update
+  pip:
+    executable: /usr/local/bin/pip3
+    name:
+      - pip
+      - setuptools
+    state: latest
+
+- name: stop flexge
+  service:
+    name: flexget
+    state: stopped
+
+- name: upgrade flexget & plugins
+  pip:
+    executable: /usr/local/bin/pip3
+    name:
+      - flexget
+      - transmissionrpc
+    state: latest
+
+- name: start flexget
+  service:
+    name: flexget
+    state: started
