@@ -28,6 +28,7 @@ Configure `sshd` daemon to secure access. It will
 #### Pre-requirements
 
 - `community.general` for [`community.general.opkg`](https://docs.ansible.com/ansible/latest/collections/community/general/opkg_module.html) module: `ansible-galaxy collection install community.general`
+- Set `username` and `password` for transmission in [config.yml](/roles/flexget/files/config.yml).
 
 ```shell
 ansible-playbook -K playbook.yaml
@@ -38,3 +39,5 @@ It will keep up-to-date:
 - `pip` & `setuptools`
 - `flexget` & `transmissionrpc`
 - `transmission`
+
+Also, it configures flexget, applying the proper configuration file.

@@ -7,11 +7,6 @@
       - setuptools
     state: latest
 
-- name: stop flexge
-  service:
-    name: flexget
-    state: stopped
-
 - name: upgrade flexget & plugins
   pip:
     executable: /usr/local/bin/pip3
@@ -19,8 +14,30 @@
       - flexget
       - transmissionrpc
     state: latest
+  notify: restart flexget
 
-- name: start flexget
-  service:
-    name: flexget
-    state: started
+# - name: "ensure {{ flexget_system_user }} user exists"
+#   user:
+#     state: present
+#     name: "{{ flexget_system_user }}"
+#     groups:
+#       - "{{ flexget_system_user_group }}"
+#     system: yes
+
+
+- name: ensure config dir exists
+  file:
+    state: directory
+    path: "{{ flexget_config_dir }}"
+    mode: u=rwx,g=rwx,o=r-x
+    owner: "{{ flexget_system_user }}"
+    group: "{{ flexget_system_user_group }}"
+
+- name: ensure flexget config files are setup correctly
+  copy:
+    src: config.yml
+    dest: "{{ flexget_config_dir }}/config.yml"
+    mode: u=rw-,g=rw-,o=r--
+    owner: "{{ flexget_system_user }}"
+    group: "{{ flexget_system_user_group }}"
+  notify: restart flexget
