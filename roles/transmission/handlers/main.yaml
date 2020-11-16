@@ -2,5 +2,5 @@
 - name: restart transmission
   become: true
   service:
-    name: transmission-daemon
+    name: transmission
     state: restarted

@@ -7,4 +7,14 @@
   with_items:
     - transmission-cfp-daemon
     - transmission-web
-  notify: restar transmission
+  notify: restart transmission
+
+- name: ensure transmission daemon service exists
+  copy:
+    src: transmission.conf
+    dest: /etc/init/transmission.conf
+    mode: u=rwx,g=--x,o=--x
+    owner: root
+    group: root
+  notify:
+  - restart transmission
