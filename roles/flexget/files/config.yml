@@ -34,6 +34,7 @@ tasks:
       username: '{? secrets.transmission.username ?}'
       password: '{? secrets.transmission.password ?}'
       path: '{? downloads ?}/tv-shows'
+      add_paused: no
       skip_files:
         - '*.nfo'
         - '*.sfv'
@@ -56,6 +57,7 @@ tasks:
       username: '{? secrets.transmission.username ?}'
       password: '{? secrets.transmission.password ?}'
       path: '{? downloads ?}/seed'
+      add_paused: no
 
   # Sort TV Shows
   sort-tv-shows:
