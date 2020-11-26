@@ -69,6 +69,7 @@ tasks:
     seen: local
     all_series:
       parse_only: yes
+    no_entries_ok: yes
     series:
       - "Marvel's Agents of S.H.I.E.L.D.":
           name_regexp:  ^marvel(')?s.agents.of.(s.h.i.e.l.d.?|shield)
@@ -101,6 +102,7 @@ tasks:
     require_field:
       - tmdb_year
     accept_all: yes
+    no_entries_ok: yes
     move:
       to: '/volume1/movies/{{ tmdb_year }}/'
       along:
@@ -123,6 +125,7 @@ tasks:
       port: 9091
       username: '{? secrets.transmission.username ?}'
       password: '{? secrets.transmission.password ?}'
+    no_entries_ok: yes
     if:
       - transmission_progress == 100 and transmission_downloadDir != "{? downloads ?}/seed": accept
     transmission:
