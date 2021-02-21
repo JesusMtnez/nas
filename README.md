@@ -4,7 +4,7 @@
 
 - Create `ansible` user in `administrators` group
 - Enable `SSH` in `Control Panel` -> `Terminal & SNMP` -> Check `Enable ssh login`
-- Python 3 installed using the Package Manager
+- Python 3 installed using `opkg`: `opkg install python3`
 
 ## Playbooks
 
