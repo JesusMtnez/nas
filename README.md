@@ -37,7 +37,7 @@ ansible-playbook -K playbook.yaml
 It will keep up-to-date:
 
 - `pip` & `setuptools`
-- `flexget` & `transmissionrpc`
+- `flexget` & `transmission-rpc`
 - `transmission`
 
 Also, it configures flexget, applying the proper configuration file.

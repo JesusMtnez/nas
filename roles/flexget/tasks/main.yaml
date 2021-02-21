@@ -22,7 +22,7 @@
   pip:
     name:
       - flexget
-      - transmissionrpc
+      - transmission-rpc
     state: latest
   notify: restart flexget
 
