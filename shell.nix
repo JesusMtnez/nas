@@ -10,6 +10,7 @@ in pkgs.mkShell rec {
   buildInputs = with pkgs; [
     niv
     ansible_2_10
+    sshpass
   ];
 
   shellHook = ''
