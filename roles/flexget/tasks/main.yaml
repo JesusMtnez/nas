@@ -51,3 +51,12 @@
     owner: "{{ flexget_system_user }}"
     group: "{{ flexget_system_user_group }}"
   notify: restart flexget
+
+- name: ensure flexget service exists
+  copy:
+    src: flexget.conf
+    dest: /etc/init/flexget.conf
+    mode: u=rwx,g=--x,o=--x
+    owner: root
+    group: root
+  notify: restart flexget
